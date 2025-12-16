@@ -74,6 +74,50 @@ section h3 {
   margin-bottom: 8px;
 }
 
+.activity-card .participants {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed #eee;
+}
+
+.activity-card .participants-title {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity-card .participants-count {
+  background: #e8f0ff;
+  color: #1a237e;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.activity-card .participants-list {
+  list-style: disc;
+  margin-left: 20px;
+  margin-top: 6px;
+}
+
+.activity-card .participants-list li {
+  padding: 4px 0;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+/* A subtle empty state */
+.activity-card .no-participants {
+  font-style: italic;
+  color: #777;
+  margin-top: 6px;
+  font-size: 0.95rem;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
