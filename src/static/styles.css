@@ -99,15 +99,47 @@ section h3 {
 }
 
 .activity-card .participants-list {
-  list-style: disc;
-  margin-left: 20px;
+  list-style: none; /* hide default bullets */
+  margin-left: 0;
   margin-top: 6px;
+  padding-left: 0;
 }
 
-.activity-card .participants-list li {
-  padding: 4px 0;
+.activity-card .participants-list li,
+.activity-card .participant-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 4px;
   color: #444;
   font-size: 0.95rem;
+  gap: 8px;
+}
+
+.activity-card .participant-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-card .participant-remove {
+  background: transparent;
+  border: none;
+  color: #c62828;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.activity-card .participant-remove:hover {
+  background: rgba(198, 40, 40, 0.08);
+}
+
+.activity-card .participant-remove:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* A subtle empty state */

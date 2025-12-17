@@ -79,7 +79,39 @@ document.addEventListener("DOMContentLoaded", () => {
         ul.className = "participants-list";
         info.participants.forEach(p => {
           const li = document.createElement("li");
-          li.textContent = p;
+          li.className = "participant-item";
+
+          const nameSpan = document.createElement("span");
+          nameSpan.className = "participant-name";
+          nameSpan.textContent = p;
+
+          const removeBtn = document.createElement("button");
+          removeBtn.className = "participant-remove";
+          removeBtn.title = "Unregister";
+          removeBtn.setAttribute("aria-label", `Unregister ${p} from ${name}`);
+          removeBtn.innerHTML = "&times;";
+
+          removeBtn.addEventListener("click", async () => {
+            removeBtn.disabled = true;
+            try {
+              const url = `/activities/${encodeURIComponent(name)}/unregister?email=${encodeURIComponent(p)}`;
+              const res = await fetch(url, { method: "DELETE" });
+              const data = await res.json();
+              if (!res.ok) {
+                showMessage(data.detail || data.message || "Unregister failed", "error");
+              } else {
+                showMessage(data.message || "Unregistered successfully", "success");
+                await fetchActivities();
+              }
+            } catch {
+              showMessage("An unexpected error occurred.", "error");
+            } finally {
+              removeBtn.disabled = false;
+            }
+          });
+
+          li.appendChild(nameSpan);
+          li.appendChild(removeBtn);
           ul.appendChild(li);
         });
         participantsWrap.appendChild(ul);
